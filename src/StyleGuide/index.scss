@@ -1,0 +1,53 @@
+@import 'reset';
+@import 'variables';
+
+.wrapper {
+  padding: 0;
+}
+
+.rect {
+  display: inline-block;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1em;
+    width: 1em;
+  }
+
+  &.main-color0::after {
+    background-color: $main-color0;
+  }
+
+  &.main-color1::after {
+    background-color: $main-color1;
+  }
+
+  &.main-color2::after {
+    background-color: $main-color2;
+  }
+
+  &.sub-color0::after {
+    background-color: $sub-color0;
+  }
+
+  &.sub-color1::after {
+    background-color: $sub-color1;
+  }
+
+  &.sub-color2::after {
+    background-color: $sub-color2;
+  }
+
+  &.another-color0::after {
+    background-color: $another-color0;
+  }
+
+  &.another-color1::after {
+    background-color: $another-color1;
+  }
+
+  &.another-color2::after {
+    background-color: $another-color2;
+  }
+}
