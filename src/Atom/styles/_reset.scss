@@ -1,0 +1,47 @@
+@import 'variables';
+
+*,
+*::before,
+*::after {
+	color: $text-color;
+	margin: 0;
+	border: 0;
+  box-sizing: border-box;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+  vertical-align: middle;
+	list-style: none;
+	font-family: inherit;
+  font-size: inherit;
+  line-height: 1.2;
+}
+
+html {
+  *,
+  *::before,
+  *::after {
+    padding: $default-padding;
+  }
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  line-height: 1;
+}
+
+html {
+  font-size: 20px;
+}
+
+@media (min-width: $sp-size) {
+  html {
+    font-size: calc(0.5vw + 17px);
+  }
+}
+
+@media (min-width: $tablet-size) {
+  html {
+    font-size: 24px;
+  }
+}

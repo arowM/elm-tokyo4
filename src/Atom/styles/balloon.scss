@@ -1,0 +1,138 @@
+@import './variables';
+
+$delay: 800ms;
+$duration: 600ms;
+
+.wrap {
+  &.myBalloon {
+    .core {
+      background-color: $sub-color3;
+      animation-name: wrap_myBalloon_core;
+      animation-duration: $duration;
+      animation-delay: $delay;
+      animation-fill-mode: forwards;
+      animation-timing-function: $over-out;
+      transform-origin: left center;
+
+      @keyframes wrap_myBalloon_core {
+        0% {
+          transform: scale(0);
+          background-color: $sub-color2;
+        }
+
+        100% {
+          transform: scale(1);
+          background-color: $sub-color2;
+        }
+      }
+
+      &::after {
+        background-image: url('../img/balloon-sharp-sub.svg');
+        left: -0.5em;
+      }
+    }
+  }
+
+  &.otherBalloon {
+    text-align: right;
+
+    .core {
+      background-color: $another-color3;
+      animation-name: wrap_otherBalloon_core;
+      animation-duration: $duration;
+      animation-delay: $delay;
+      animation-fill-mode: forwards;
+      animation-timing-function: $over-out;
+      transform-origin: right center;
+
+      @keyframes wrap_otherBalloon_core {
+        0% {
+          transform: scale(0);
+          background-color: $another-color2;
+        }
+
+        100% {
+          transform: scale(1);
+          background-color: $another-color2;
+        }
+      }
+
+      &::after {
+        background-image: url('../img/balloon-sharp-another.svg');
+        background-position: right;
+        right: -0.5em;
+      }
+    }
+  }
+}
+
+.core {
+  position: relative;
+  border-radius: 1em;
+  display: inline-block;
+  min-height: 2em;
+
+  &::before {
+    content: '';
+    padding: 0;
+    display: inline-block;
+    background-image: url('../img/three-dots.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 1em;
+    width: 3em;
+    animation-name: core_before;
+    animation-delay: $delay;
+    animation-fill-mode: forwards;
+
+    @keyframes core_before {
+      100% {
+        transform: scale(0);
+        position: absolute;
+      }
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 1em;
+    width: 1em;
+    z-index: -1;
+    opacity: 0;
+    animation-name: core_after;
+    animation-delay: $delay;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+
+    @keyframes core_after {
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.body {
+  opacity: 0;
+  padding: 0;
+  transform: scale(0);
+  position: absolute;
+  overflow: hidden;
+  animation-name: core_children;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+
+  @keyframes core_children {
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      position: static;
+    }
+  }
+}

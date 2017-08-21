@@ -1,0 +1,40 @@
+/* =======
+ *  Sizes
+ * ======= */
+$sp-size: 600px;
+$tablet-size: 960px;
+$default-padding: 0.6rem;
+$invert-padding: -$default-padding;
+$border-radius: 0.3em;
+
+/* =============
+ *  Font colors
+ * ============= */
+$text-color: #1a1a1a;
+$invert-text-color: #ddd;
+$subtext-color: #808080;
+
+/* ==============
+ *  Color themes
+ * ============== */
+$accent-color: #ac0000;
+$main-color0: #003;
+$main-color1: lighten($main-color0, 40%);
+$main-color2: lighten($main-color0, 50%);
+$main-color3: lighten($main-color0, 60%);
+/* $sub-color0: #039; */
+$sub-color0: #663;
+$sub-color1: lighten($sub-color0, 40%);
+$sub-color2: lighten($sub-color0, 50%);
+$sub-color3: lighten($sub-color0, 60%);
+$another-color0: #366;
+$another-color1: lighten($another-color0, 40%);
+$another-color2: lighten($another-color0, 50%);
+$another-color3: lighten($another-color0, 60%);
+
+/* ==================
+ *  Timing functions
+ * ================== */
+$over-in-out: cubic-bezier(0.5, -0.45, 0.5, 1.45);
+$over-out: cubic-bezier(0.5, 0, 0.5, 1.45);
+$over-in: cubic-bezier(0.5, -0.45, 0.5, 1);
