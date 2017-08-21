@@ -1,9 +1,10 @@
 module Atom.View exposing (..)
 
 import Atom.Config as Config
+import Atom.Model as Model
 import Atom.Style as Style
-import Html exposing (Html, div)
-import Html.Attributes exposing (attribute)
+import Html exposing (Attribute, Html, div, span)
+import Html.Attributes exposing (attribute, disabled, type_)
 
 
 -- Packer
@@ -14,6 +15,18 @@ pack children =
     div
         [ .class Style.common .pack ]
         children
+
+
+
+-- Text
+
+
+text : String -> Html msg
+text str =
+    span
+        []
+        [ Html.text str
+        ]
 
 
 
@@ -40,4 +53,48 @@ balloon config children =
                 ]
                 children
             ]
+        ]
+
+
+
+-- Button
+
+
+button : Config.Button -> List (Attribute msg) -> List (Html msg) -> Model.Button -> Html msg
+button config attrs children model =
+    div
+        [ .class Style.button .wrap
+        ]
+        [ Html.button
+            (List.concat
+                [ [ type_ "button"
+                  , .class Style.button .core
+                  , .class Style.button <|
+                        case config.theme of
+                            Config.Main ->
+                                .main
+
+                            Config.Sub ->
+                                .sub
+
+                            Config.Another ->
+                                .another
+                  ]
+                , case model.state of
+                    Model.BusyButton ->
+                        [ attribute "aria-busy" "true"
+                        , disabled True
+                        ]
+
+                    Model.InvalidButton ->
+                        [ attribute "aria-invalid" "true"
+                        , disabled True
+                        ]
+
+                    _ ->
+                        []
+                , attrs
+                ]
+            )
+            children
         ]

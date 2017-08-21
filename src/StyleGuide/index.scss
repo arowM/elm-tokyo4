@@ -27,6 +27,10 @@
     background-color: $main-color2;
   }
 
+  &.main-color3::after {
+    background-color: $main-color3;
+  }
+
   &.sub-color0::after {
     background-color: $sub-color0;
   }
@@ -39,6 +43,10 @@
     background-color: $sub-color2;
   }
 
+  &.sub-color3::after {
+    background-color: $sub-color3;
+  }
+
   &.another-color0::after {
     background-color: $another-color0;
   }
@@ -49,5 +57,9 @@
 
   &.another-color2::after {
     background-color: $another-color2;
+  }
+
+  &.another-color3::after {
+    background-color: $another-color3;
   }
 }

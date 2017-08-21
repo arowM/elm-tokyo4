@@ -1,7 +1,5 @@
 module Atom.Config exposing (..)
 
-import Monocle.Lens exposing (Lens)
-
 
 -- Balloon
 
@@ -16,15 +14,20 @@ type BalloonOwner
     | OtherBalloon
 
 
-owner : Lens { x | owner : a } a
-owner =
-    let
-        get =
-            .owner
 
-        set v a =
-            { a
-                | owner = v
-            }
-    in
-        Lens get set
+-- Button
+
+
+type alias Button =
+    { theme : Theme
+    }
+
+
+
+-- Theme
+
+
+type Theme
+    = Main
+    | Sub
+    | Another

@@ -1,0 +1,41 @@
+@import './variables';
+
+$border-width: 0.1em;
+$border-radius: 0.4em;
+
+.core {
+  border: solid $border-width $background-color;
+  border-radius: $border-radius;
+  color: $invert-text-color;
+  cursor: pointer;
+
+  &[aria-busy="true"],
+  &[aria-invalid="true"] {
+    &.main {
+      background-color: $main-color1;
+    }
+
+    &.sub {
+      background-color: $sub-color1;
+    }
+
+    &.another {
+      background-color: $another-color1;
+    }
+  }
+
+  &:not([aria-busy="true"]),
+  &:not([aria-invalid="true"]) {
+    &.main {
+      background-color: $main-color0;
+    }
+
+    &.sub {
+      background-color: $sub-color0;
+    }
+
+    &.another {
+      background-color: $another-color0;
+    }
+  }
+}

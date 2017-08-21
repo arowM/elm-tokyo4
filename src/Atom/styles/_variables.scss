@@ -11,17 +11,18 @@ $border-radius: 0.3em;
  *  Font colors
  * ============= */
 $text-color: #1a1a1a;
-$invert-text-color: #ddd;
+$invert-text-color: #fdfcfd;
 $subtext-color: #808080;
 
 /* ==============
  *  Color themes
  * ============== */
+$background-color: $invert-text-color;
 $accent-color: #ac0000;
-$main-color0: #003;
-$main-color1: lighten($main-color0, 40%);
-$main-color2: lighten($main-color0, 50%);
-$main-color3: lighten($main-color0, 60%);
+$main-color0: #449;
+$main-color1: lighten($main-color0, 30%);
+$main-color2: lighten($main-color0, 40%);
+$main-color3: lighten($main-color0, 50%);
 /* $sub-color0: #039; */
 $sub-color0: #663;
 $sub-color1: lighten($sub-color0, 40%);
