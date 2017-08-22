@@ -28,8 +28,8 @@ wrap children =
 -- Alignment
 
 
-inline : Config.Inline -> Html msg -> Html msg
-inline config x =
+inline : Config.Inline -> List (Html msg) -> Html msg
+inline config children =
     div
         (List.concat
             [ [ .class Style.common .inline
@@ -48,8 +48,7 @@ inline config x =
                     ]
             ]
         )
-        [ x
-        ]
+        children
 
 
 

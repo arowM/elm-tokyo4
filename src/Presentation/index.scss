@@ -57,7 +57,7 @@ $shadow-length: 4px;
 }
 
 .imagePopup {
-  height:85vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
 }
@@ -85,4 +85,47 @@ $shadow-length: 4px;
 
 .sakura3 {
   background-image: url("./img/sakura3.jpg");
+}
+
+.answer {
+  display: flex;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: top;
+  height: 5em;
+  width: 5em;
+  max-width: 12%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+
+  &.IconAsk {
+    background-image: url("./img/bot-ask.png");
+  }
+
+  &.IconConfirm {
+    background-image: url("./img/bot-confirm.png");
+  }
+
+  &.IconGoat {
+    background-image: url("./img/bot-goat.png");
+  }
+
+  &.IconThinking {
+    background-image: url("./img/bot-thinking.png");
+  }
+
+  &.IconBye {
+    background-image: url("./img/bot-bye.png");
+  }
+
+  &.IconError {
+    background-image: url("./img/bot-error.png");
+  }
+
+  &.IconNormal {
+    background-image: url("./img/bot-normal.png");
+  }
 }

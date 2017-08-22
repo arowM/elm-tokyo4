@@ -12,16 +12,17 @@ const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 
 const ENV = {
   'port': process.env.PORT || 8080,
   'host': process.env.HOST || 'localhost',
-  'title': process.env.TITLE || 'Elm CSS modules example',
+  'title': process.env.TITLE || '複雑化するUIにどう立ち向かうか - Elmの思想に学ぶ現代的なWebフロントエンド開発手法',
 };
+const isDev = TARGET_ENV === 'development';
 
 // Common webpack config
 const commonConfig = {
 
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, 'docs/'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: isDev ? '/' : '/elm-tokyo4/',
   },
 
   entry: {
@@ -193,11 +194,40 @@ if (TARGET_ENV === 'production') {
         },
         {
           test: /\.(css|scss)$/,
+          include: [/src\/Atom\/styles/],
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
-              'css-loader?modules=true',
-              'sass-loader',
+              { 'loader': 'css-loader',
+                'options':
+                  { 'modules': 'ture' },
+              },
+              { 'loader': 'sass-loader',
+                'options': {
+                  'includePaths': [
+                    path.resolve(__dirname, 'src/Atom/styles/'),
+                  ],
+                },
+              },
+              'postcss-loader',
+            ]
+          }),
+        },
+        {
+          test: /\.(css|scss)$/,
+          exclude: [/src\/Atom\/styles/],
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              { 'loader': 'css-loader',
+              },
+              { 'loader': 'sass-loader',
+                'options': {
+                  'includePaths': [
+                    path.resolve(__dirname, 'src/Atom/styles/'),
+                  ],
+                },
+              },
               'postcss-loader',
             ]
           }),

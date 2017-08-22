@@ -79,7 +79,7 @@ pagenation length =
                 }
                 [ Html.onClick Update.BackPage
                 ]
-                [ View.text "戻る"
+                [ View.text "←戻る"
                 ]
             ]
         , div
@@ -92,7 +92,7 @@ pagenation length =
                 }
                 [ Html.onClick <| Update.ForwardPage length
                 ]
-                [ View.text "次へ"
+                [ View.text "次へ→"
                 ]
             ]
         ]
@@ -127,7 +127,9 @@ questionView =
 
 answerView : Icon -> List (Html Msg) -> Html Msg
 answerView icon children =
-    View.pack
+    div
+        [ class "answer"
+        ]
         [ div
             [ class "icon"
             , class <| toString icon
@@ -161,12 +163,12 @@ scenarios : List Scenario
 scenarios =
     [ Question
         [ View.text "複雑化するUIにどう立ち向かうか"
-        , View.subText "Elmの思想を反映した開発方針"
+        , View.subText "Elmの思想に学ぶ現代的なWebフロントエンド開発手法"
         ]
     , Question
         [ View.text "自己紹介"
         ]
-    , Answer None
+    , Answer IconNormal
         [ View.wrap
             [ Html.a
                 [ Html.href "https://twitter.com/arowM_"
@@ -176,7 +178,7 @@ scenarios =
                 ]
             ]
         ]
-    , Answer None
+    , Answer IconGoat
         [ View.text "さくらちゃん（ヤギ）の身の回りのお世話をする魔法少女"
         , View.text "あまりにかわいいので1日2時間はさくらちゃんと遊んでいます"
         ]
@@ -186,25 +188,25 @@ scenarios =
     , Question
         [ View.text "今日のテーマ"
         ]
-    , Answer None
+    , Answer IconConfirm
         [ View.text "年々複雑さを増すWebフロントエンド"
         , View.text "複雑なUIを効率よく実現して、さくらちゃんと遊ぶ時間をつくりましょう！"
         ]
     , Question
         [ View.text "Elm最大の特徴は？"
         ]
-    , Answer None
+    , Answer IconConfirm
         [ View.text "言語単体としての完成度は追い求めません"
         , View.text "Elmの特徴は「目的のために最適な手段をえらぶ」こと"
         ]
     , Question
         [ View.text "たとえば？"
         ]
-    , Answer None
+    , Answer IconNormal
         [ View.text "多くのAltJS は、まず言語としてイケてる存在になりたがります"
         , View.text "そのうえで、そのイケてる言語で Web フレームワークをつくろう/つかおうとします"
         ]
-    , Answer None
+    , Answer IconConfirm
         [ View.text "Elmにはフレームワークの選択肢が1つしかありません"
         , View.text "Elmは素晴らしい汎用言語になるのではなく"
         , View.text "Webフロントエンド制作を楽にするという「目的」を最適に実現する DSL (Domain Specific Language) です"
@@ -215,13 +217,13 @@ scenarios =
     , Question
         [ View.text "諸注意"
         ]
-    , Answer None
+    , Answer IconThinking
         [ View.text "そんなElmを使うのであれば、手段にこだわらない姿勢が重要です"
         , View.text "今日ご紹介する手法も、つくるものが変われば最適解ではなくなります"
         , View.text "まず、目的から考えることがElmの思想を体現することにつながります"
         ]
     , Answer None
-        [ View.text "発表でコードはあまりでてきませんが、この資料のコード自体が実例です"
+        [ View.text "発表にコードはでてきませんが、この資料のコード自体が実例です"
         , View.wrap
             [ Html.a
                 [ Html.href "https://github.com/arowM/elm-tokyo4"
@@ -235,28 +237,28 @@ scenarios =
     , Question
         [ View.text "実際に問題を解決してみよう！"
         ]
-    , Answer None
+    , Answer IconThinking
         [ View.text "この吹き出しを実装することを考えます"
         ]
     , Answer None
-        [ View.text "1. 処理中（に見せかけた）のUI"
+        [ View.text "1. 処理中（に見せかけた）のアニメーション"
         , View.text "2. メッセージをにゅぅっとだす"
         , View.text "これらの状態管理とアニメーションを実現します"
         ]
     , Question
         [ View.text "どうやって状態管理とアニメーションをElmで実現するか？"
         ]
-    , Answer None
+    , Answer IconError
         [ View.text "..."
         ]
-    , Answer None
+    , Answer IconAsk
         [ View.text "さっき言ったじゃないですか"
         , View.text "「手段にこだわらない」って"
         ]
     , Answer None
         [ View.text "Elmで実現する必要はないです"
         ]
-    , Answer None
+    , Answer IconError
         [ View.text "Elmに限らず、Flux系の設計でこういった状態管理は大変骨が折れます"
         , View.wrap
             [ Html.text "Elmの場合は"
@@ -279,27 +281,54 @@ scenarios =
     , Question
         [ View.text "じゃあどうやったの？"
         ]
-    , Answer None
+    , Answer IconConfirm
         [ View.text "吹き出しの状態をシステム全体が知る必要はないので"
-        , View.text "* SVGアニメーション"
+        , div
+            []
+            [ Html.text "* SVGアニメーション"
+            , Html.a
+                [ Html.href "https://github.com/SamHerbert/SVG-Loaders"
+                , Html.target "_blank"
+                ]
+                [ Html.text "(SVG-Loaders)"
+                ]
+            ]
         , View.text "* CSSアニメーション"
-        , View.text "をつかいました"
+        , View.text "をつかって、吹き出しのview内で状態を完結させています"
         ]
     , Answer None
         [ View.text "CSSアニメーションで一定時間後に状態が変わるように設定しています"
-        , View.text "なめられがちなCSSだけど、実はすごい"
-        ]
-    , Answer None
-        [ View.text "グローバルには知る必要のない情報が、Viewの中で完結しました"
+        , View.text "プログラマからは敬遠されがちなCSSだけど、使いこなせば実はすごい！"
         ]
     , Question
         [ View.text "elm-css-modules-loader について"
         ]
     , Answer None
-        [ View.text "ElmでCSS modulesをつかえるようになります"
+        [ View.text "CSSの弱点の1つは、名前空間の衝突です"
+        , View.text "そこで、ElmでCSS modulesをつかえるようになる"
+        , Html.a
+            [ Html.href "https://github.com/cultureamp/elm-css-modules-loader/"
+            , Html.target "_blank"
+            ]
+            [ Html.text "elm-css-modules-loader"
+            ]
+        , View.text "が選択肢の1つになります"
         ]
-    , Answer None
-        [ View.text "もう資料がないです"
+    , Answer IconError
+        [ View.text "ただ、設計があまりよくありません。"
+        , View.text "クラス名を逐一レコードのフィールド名として明記したり"
+        , View.text "そのせいで型が必要以上に複雑になったり"
+        ]
+    , Answer IconConfirm
+        [ View.text "ここでも目的から用途にあった最適解を選ぶことが重要です！"
+        , View.text "* rtfeldman/elm-css"
+        , View.text "* グローバルにCSSを書く"
+        , View.text "* インラインスタイルで対応する"
+        , View.text "* elm-css-modules-loader"
+        , View.text "* elm-style-elements"
+        ]
+    , Answer IconBye
+        [ View.text "Elmの思想に学んで、目的や用途に応じて柔軟に解決策を見つけましょう！"
         ]
     ]
 
@@ -312,6 +341,13 @@ type Scenario
 
 type Icon
     = None
+    | IconAsk
+    | IconConfirm
+    | IconGoat
+    | IconThinking
+    | IconBye
+    | IconError
+    | IconNormal
 
 
 -- Helper functions
