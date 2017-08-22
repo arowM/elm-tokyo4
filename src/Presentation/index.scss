@@ -64,7 +64,8 @@ $shadow-length: 4px;
 
 .sakura1,
 .sakura2,
-.sakura3 {
+.sakura3,
+.sakura4 {
   flex: 1;
   padding: 0;
   width: 100%;
@@ -74,17 +75,19 @@ $shadow-length: 4px;
 }
 
 .sakura1 {
-  padding-top: calc(100% * 1152 / 2048);
   background-image: url("./img/sakura1.jpg");
 }
 
 .sakura2 {
-  padding-top: calc(100% * 1152 / 2048);
   background-image: url("./img/sakura2.jpg");
 }
 
 .sakura3 {
   background-image: url("./img/sakura3.jpg");
+}
+
+.sakura4 {
+  background-image: url("./img/sakura4.jpg");
 }
 
 .answer {
