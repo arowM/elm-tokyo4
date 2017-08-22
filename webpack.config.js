@@ -240,7 +240,7 @@ if (TARGET_ENV === 'production') {
       ]),
 
       // Extract CSS into a separate file
-      new ExtractTextPlugin({ filename: './[hash].css', allChunks: true }),
+      new ExtractTextPlugin({ filename: './[name].css', allChunks: true }),
 
       // Minify & mangle JS/CSS
       new webpack.optimize.UglifyJsPlugin({
