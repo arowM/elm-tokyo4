@@ -3,7 +3,8 @@ module Presentation.View exposing (..)
 import Atom.Config as Config
 import Atom.Model as Model
 import Atom.View as View
-import Html exposing (Html)
+import Html exposing (Html, div)
+import Html.Attributes as Html exposing (class)
 import Html.Events as Html
 import Html.Lazy exposing (lazy)
 import Presentation.Model as Model exposing (Model)
@@ -13,41 +14,88 @@ import Presentation.Update as Update exposing (Msg)
 
 view : Model -> Html Msg
 view model =
-    View.pack
-        [ lazy View.text <| toString model.page
-        , lazy scenariosView model.page
-        , View.pack
-            [ View.inline
-                { align = Config.Bottom
-                } <|
-                View.button
-                    { theme = Config.Main
-                    }
-                    { state = Model.NormalButton
-                    }
-                    [ Html.onClick Update.BackPage
-                    ]
-                    [ View.text "戻る"
-                    ]
-            , View.inline
-                { align = Config.Bottom
-                } <|
-                View.button
-                    { theme = Config.Sub
-                    }
-                    { state = Model.NormalButton
-                    }
-                    [ Html.onClick <| Update.ForwardPage
-                        (List.length Scenario.scenarios)
-                    ]
-                    [ View.text "次へ"
-                    ]
+    wrapper
+        [ header
+            [ View.text "Elm Tokyo Meetup #4"
+            ]
+        , body
+            [ lazy scenariosView model.page
+            ]
+        , footer
+            [ pagenation
             ]
         ]
 
 
 
 -- Helper renderer
+
+
+wrapper : List (Html Msg) -> Html Msg
+wrapper =
+    div
+        [ class "wrapper"
+        ]
+
+
+header : List (Html Msg) -> Html Msg
+header =
+    div
+        [ class "header"
+        ]
+
+
+body : List (Html Msg) -> Html Msg
+body children =
+    div
+        [ class "body"
+        ]
+        [ div
+            [ class "core"
+            ]
+            children
+        ]
+
+
+footer : List (Html Msg) -> Html Msg
+footer =
+    div
+        [ class "footer"
+        ]
+
+
+pagenation : Html Msg
+pagenation =
+    div
+        [ class "pagenation"
+        ]
+        [ div
+            [ class "backButton"
+            ]
+            [ View.button
+                { theme = Config.Main
+                }
+                { state = Model.NormalButton
+                }
+                [ Html.onClick Update.BackPage
+                ]
+                [ View.text "戻る"
+                ]
+            ]
+        , div
+            [ class "forwardButton"
+            ]
+            [ View.button
+                { theme = Config.Main
+                }
+                { state = Model.NormalButton
+                }
+                [ Html.onClick <| Update.ForwardPage scenarioLength
+                ]
+                [ View.text "次へ"
+                ]
+            ]
+        ]
 
 
 scenariosView : Int -> Html Msg
@@ -87,3 +135,11 @@ answerView _ =
 innerView : List (Html Msg) -> Html Msg
 innerView =
     View.pack
+
+
+
+-- Helper functions
+
+
+scenarioLength : Int
+scenarioLength = List.length Scenario.scenarios

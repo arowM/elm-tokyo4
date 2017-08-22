@@ -1,7 +1,9 @@
 module Main exposing (..)
 
+import Keyboard
 import Navigation exposing (Location)
 import Presentation.Model as Model exposing (Model)
+import Presentation.Scenario as Scenario
 import Presentation.Update as Update exposing (Msg(..), update)
 import Presentation.Util as Util
 import Presentation.View as View exposing (view)
@@ -45,4 +47,6 @@ init { hash } =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.none
+    Sub.batch
+        [ Keyboard.downs (Update.OnKeydown (List.length Scenario.scenarios))
+        ]
