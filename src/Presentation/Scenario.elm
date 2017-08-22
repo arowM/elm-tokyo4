@@ -36,11 +36,17 @@ scenarios =
         [ View.text "さくらちゃん（ヤギ）の身の回りのお世話をする魔法少女"
         , View.text "あまりにかわいいので1日2時間はさくらちゃんと遊んでいます"
         ]
+    -- , Inner <| \show ->
+    --     [ View.popup
+    --       (View.text "foo")
+    --       { show = show
+    --       }
+    --     ]
     , Question
         [ View.text "今日のテーマ"
         ]
     , Answer None
-        [ View.text "Webフロントエンドは年々複雑さを増しています"
+        [ View.text "年々複雑さを増すWebフロントエンド"
         , View.text "複雑なUIを効率よく実現して、さくらちゃんと遊ぶ時間をつくりましょう！"
         ]
     , Question
@@ -60,7 +66,7 @@ scenarios =
     , Answer None
         [ View.text "Elmにはフレームワークの選択肢が1つしかありません"
         , View.text "Elmは素晴らしい汎用言語になるのではなく"
-        , View.text "Webフロントエンド制作が楽にするという「目的」を最適に実現する DSL (Domain Specific Language) です"
+        , View.text "Webフロントエンド制作を楽にするという「目的」を最適に実現する DSL (Domain Specific Language) です"
         ]
     , Answer None
         [ View.text "つねに目的が先にあり、そのために最適な手段を作り出していくのがElmのありかたです"
@@ -142,13 +148,22 @@ scenarios =
     , Answer None
         [ View.text "グローバルには知る必要のない情報が、Viewの中で完結しました"
         ]
+    , Question
+        [ View.text "elm-css-modules-loader について"
+        ]
+    , Answer None
+        [ View.text "ElmでCSS modulesをつかえるようになります"
+        ]
+    , Answer None
+        [ View.text "もう資料がないです"
+        ]
     ]
 
 
 type Scenario
     = Question (List (Html Msg))
     | Answer Icon (List (Html Msg))
-    | Inner (List (Html Msg))
+    | Inner (Bool -> List (Html Msg))
 
 
 type Icon

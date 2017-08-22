@@ -102,12 +102,12 @@ pagenation =
 scenariosView : Int -> Html Msg
 scenariosView n =
     View.pack <|
-        List.map scenarioView <|
+        List.indexedMap (scenarioView n) <|
             List.take n Scenario.scenarios
 
 
-scenarioView : Scenario -> Html Msg
-scenarioView s =
+scenarioView : Int -> Int -> Scenario -> Html Msg
+scenarioView idx n s =
     case s of
         Scenario.Question x ->
             questionView x
@@ -115,8 +115,8 @@ scenarioView s =
         Scenario.Answer icon x ->
             answerView icon x
 
-        Scenario.Inner x ->
-            innerView x
+        Scenario.Inner f ->
+            innerView f (idx == n)
 
 
 questionView : List (Html Msg) -> Html Msg
@@ -133,9 +133,9 @@ answerView _ =
         }
 
 
-innerView : List (Html Msg) -> Html Msg
-innerView =
-    View.pack
+innerView : (Bool -> List (Html Msg)) -> Bool -> Html Msg
+innerView f b =
+    View.pack (f b)
 
 
 

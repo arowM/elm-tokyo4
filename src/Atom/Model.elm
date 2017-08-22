@@ -29,3 +29,26 @@ state =
             }
     in
         Lens get set
+
+
+
+-- Popup
+
+
+type alias Popup =
+    { show : Bool
+    }
+
+
+show : Lens { x | show : a } a
+show =
+    let
+        get =
+            .show
+
+        set v a =
+            { a
+                | show = v
+            }
+    in
+        Lens get set

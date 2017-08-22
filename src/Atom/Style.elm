@@ -37,3 +37,11 @@ button =
         , sub = ""
         , another = ""
         }
+
+
+popup =
+    css "../Atom/styles/popup.scss"
+        { wrapper = ""
+        , centerBox = ""
+        , background = ""
+        }
