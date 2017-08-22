@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot --progress",
     "test": "$(yarn bin)/elm-verify-examples && $(yarn bin)/elm-test",
-    "build": "rimraf dist && webpack"
+    "build": "rimraf docs && webpack"
   },
   "devDependencies": {
     "elm-test": "^0.18.8",
