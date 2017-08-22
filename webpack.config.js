@@ -28,9 +28,9 @@ const commonConfig = {
     'style-guide': [
       path.join( __dirname, 'src/StyleGuide/index.js' )
     ],
-    // 'presentation': [
-    //   path.join( __dirname, 'src/Presentation/index.js' )
-    // ],
+    'presentation': [
+      path.join( __dirname, 'src/Presentation/index.js' )
+    ],
   },
 
   resolve: {
@@ -68,20 +68,20 @@ const commonConfig = {
         removeComments: true,
       },
     }),
-    // new HtmlWebpackPlugin({
-    //   chunks: ['presentation'],
-    //   template: 'src/Presentation/index.html',
-    //   inject:   'body',
-    //   filename: 'presentation/index.html',
-    //   data: ENV,
-    //   hash: true,
-    //   minify: {
-    //     collapseInlineTagWhitespace: true,
-    //     collapseWhitespace: true,
-    //     html5: true,
-    //     removeComments: true,
-    //   },
-    // }),
+    new HtmlWebpackPlugin({
+      chunks: ['presentation'],
+      template: 'src/Presentation/index.html',
+      inject:   'body',
+      filename: 'presentation/index.html',
+      data: ENV,
+      hash: true,
+      minify: {
+        collapseInlineTagWhitespace: true,
+        collapseWhitespace: true,
+        html5: true,
+        removeComments: true,
+      },
+    }),
 
     // Inject variables to JS file.
     new webpack.DefinePlugin({
