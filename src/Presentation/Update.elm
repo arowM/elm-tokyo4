@@ -8,6 +8,7 @@ import Navigation exposing (Location)
 type Msg
     = OnChangeLocation Location
     | ForwardPage
+    | BackPage
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -31,4 +32,11 @@ update action model =
                 | page = model.page + 1
               }
             , Navigation.newUrl <| Util.toHash <| model.page + 1
+            )
+
+        BackPage ->
+            ( { model
+                | page = model.page - 1
+              }
+            , Navigation.newUrl <| Util.toHash <| model.page - 1
             )

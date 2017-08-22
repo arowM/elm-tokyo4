@@ -19,6 +19,15 @@ view model =
             }
             { state = Model.NormalButton
             }
+            [ Html.onClick Update.BackPage
+            ]
+            [ View.text "戻る"
+            ]
+        , View.button
+            { theme = Config.Sub
+            }
+            { state = Model.NormalButton
+            }
             [ Html.onClick Update.ForwardPage
             ]
             [ View.text "次へ"
