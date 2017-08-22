@@ -152,7 +152,8 @@ innerView f =
 
 
 scenarioLength : Int
-scenarioLength = List.length scenarios
+scenarioLength =
+    List.length scenarios
 
 
 
@@ -351,23 +352,25 @@ type Icon
     | IconNormal
 
 
+
 -- Helper functions
 
 
 imagePopup : String -> Scenario
 imagePopup str =
-    Inner <| \length show ->
-        [ View.popup
-          { show = show
-          }
-          [ div
-            [ class "imagePopup"
-            ]
-            [ div
-                [ class str
+    Inner <|
+        \length show ->
+            [ View.popup
+                { show = show
+                }
+                [ div
+                    [ class "imagePopup"
+                    ]
+                    [ div
+                        [ class str
+                        ]
+                        []
+                    , pagenation length
+                    ]
                 ]
-                []
-            , pagenation length
             ]
-          ]
-        ]

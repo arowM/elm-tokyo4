@@ -53,7 +53,7 @@ update action model =
                     backPage model
 
                 _ ->
-                    ( model, Cmd.none)
+                    ( model, Cmd.none )
 
         ForwardPage last ->
             forwardPage last model
@@ -62,8 +62,7 @@ update action model =
             backPage model
 
         Null ->
-            ( model, Cmd.none)
-
+            ( model, Cmd.none )
 
 
 forwardPage : Int -> Model -> ( Model, Cmd Msg )
@@ -71,7 +70,8 @@ forwardPage last model =
     let
         nextPage =
             min last <|
-                model.page + 1
+                model.page
+                    + 1
     in
         ( { model
             | page = nextPage
@@ -85,7 +85,8 @@ backPage model =
     let
         nextPage =
             max 0 <|
-                model.page - 1
+                model.page
+                    - 1
     in
         ( { model
             | page = nextPage
