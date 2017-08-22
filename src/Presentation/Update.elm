@@ -43,13 +43,7 @@ update action model =
                 39 ->
                     forwardPage last model
 
-                40 ->
-                    forwardPage last model
-
                 37 ->
-                    backPage model
-
-                38 ->
                     backPage model
 
                 _ ->
