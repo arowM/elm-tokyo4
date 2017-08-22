@@ -60,8 +60,8 @@ balloon config children =
 -- Button
 
 
-button : Config.Button -> List (Attribute msg) -> List (Html msg) -> Model.Button -> Html msg
-button config attrs children model =
+button : Config.Button -> Model.Button -> List (Attribute msg) -> List (Html msg) -> Html msg
+button config model attrs children =
     div
         [ .class Style.button .wrap
         ]

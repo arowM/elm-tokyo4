@@ -46,27 +46,27 @@ view model =
             [ View.button
                 { theme = Config.Main
                 }
+                { state = Model.NormalButton
+                }
                 []
                 [ View.text "foo"
                 ]
-                { state = Model.NormalButton
-                }
             , View.button
                 { theme = Config.Sub
                 }
+                { state = Model.NormalButton
+                }
                 []
                 [ View.text "foo"
                 ]
-                { state = Model.NormalButton
-                }
             , View.button
                 { theme = Config.Another
                 }
+                { state = Model.NormalButton
+                }
                 []
                 [ View.text "foo"
                 ]
-                { state = Model.NormalButton
-                }
             ]
         ]
 

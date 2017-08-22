@@ -17,10 +17,10 @@ view model =
         , View.button
             { theme = Config.Main
             }
+            { state = Model.NormalButton
+            }
             [ Html.onClick Update.ForwardPage
             ]
             [ View.text "次へ"
             ]
-            { state = Model.NormalButton
-            }
         ]
