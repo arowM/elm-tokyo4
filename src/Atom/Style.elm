@@ -10,6 +10,7 @@ common =
         , top = ""
         , middle = ""
         , bottom = ""
+        , subText = ""
         }
 
 

@@ -1,9 +1,12 @@
 module Presentation.Update exposing (..)
 
+import Dom as Dom
+import Dom.Scroll as Dom
 import Keyboard
+import Navigation exposing (Location)
 import Presentation.Model as Model exposing (Model)
 import Presentation.Util as Util
-import Navigation exposing (Location)
+import Task
 
 
 type Msg
@@ -11,6 +14,7 @@ type Msg
     | OnKeydown Int Keyboard.KeyCode
     | ForwardPage Int
     | BackPage
+    | Null
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -26,7 +30,9 @@ update action model =
                         Nothing ->
                             model.page
               }
-            , Cmd.none
+            , Task.attempt
+                (\_ -> Null)
+                (Dom.toBottom "main")
             )
 
         OnKeydown last key ->
@@ -54,6 +60,9 @@ update action model =
 
         BackPage ->
             backPage model
+
+        Null ->
+            ( model, Cmd.none)
 
 
 

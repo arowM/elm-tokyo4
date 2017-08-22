@@ -49,6 +49,7 @@ body : List (Html Msg) -> Html Msg
 body children =
     div
         [ class "body"
+        , Html.id "main"
         ]
         [ div
             [ class "core"

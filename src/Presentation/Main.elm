@@ -35,7 +35,7 @@ init { hash } =
                     x
 
                 Nothing ->
-                    0
+                    1
       }
     , Cmd.none
     )

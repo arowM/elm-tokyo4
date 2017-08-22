@@ -3,7 +3,7 @@ module Atom.View exposing (..)
 import Atom.Config as Config
 import Atom.Model as Model
 import Atom.Style as Style
-import Html exposing (Attribute, Html, div, span)
+import Html exposing (Attribute, Html, div)
 import Html.Attributes exposing (attribute, disabled, type_)
 
 
@@ -50,11 +50,18 @@ inline config x =
 
 text : String -> Html msg
 text str =
-    span
+    div
         []
         [ Html.text str
         ]
 
+
+subText : String -> Html msg
+subText str =
+    div
+        [ .class Style.common .subText ]
+        [ Html.text str
+        ]
 
 
 -- Balloon
