@@ -7,7 +7,7 @@ import Navigation exposing (Location)
 
 type Msg
     = OnChangeLocation Location
-    | ForwardPage
+    | ForwardPage Int
     | BackPage
 
 
@@ -27,16 +27,26 @@ update action model =
             , Cmd.none
             )
 
-        ForwardPage ->
-            ( { model
-                | page = model.page + 1
-              }
-            , Navigation.newUrl <| Util.toHash <| model.page + 1
-            )
+        ForwardPage last ->
+            let
+                nextPage =
+                    min last <|
+                        model.page + 1
+            in
+                ( { model
+                    | page = nextPage
+                  }
+                , Navigation.newUrl <| Util.toHash nextPage
+                )
 
         BackPage ->
-            ( { model
-                | page = model.page - 1
-              }
-            , Navigation.newUrl <| Util.toHash <| model.page - 1
-            )
+            let
+                nextPage =
+                    max 0 <|
+                        model.page - 1
+            in
+                ( { model
+                    | page = nextPage
+                  }
+                , Navigation.newUrl <| Util.toHash <| nextPage
+                )
