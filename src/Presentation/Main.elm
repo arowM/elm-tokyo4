@@ -28,12 +28,12 @@ main =
 init : Location -> ( Model, Cmd Msg )
 init { hash } =
     ( { page =
-        case Util.parseHash hash of
-            Just x ->
-                x
+            case Util.parseHash hash of
+                Just x ->
+                    x
 
-            Nothing ->
-                0
+                Nothing ->
+                    0
       }
     , Cmd.none
     )

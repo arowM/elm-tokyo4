@@ -26,7 +26,7 @@ parseHash str =
         bare : String
         bare =
             replace (AtMost 1) (regex "^page-") (\_ -> "") <|
-            replace (AtMost 1) (regex "^#") (\_ -> "") str
+                replace (AtMost 1) (regex "^#") (\_ -> "") str
     in
         case String.toInt bare of
             Ok n ->

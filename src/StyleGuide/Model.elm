@@ -4,5 +4,4 @@ module StyleGuide.Model exposing (..)
 
 
 type alias Model =
-    {
-    }
+    {}

@@ -25,8 +25,7 @@ main =
 
 init : ( Model, Cmd Msg )
 init =
-    ( {
-      }
+    ( {}
     , Cmd.none
     )
 
