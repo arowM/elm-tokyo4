@@ -39,6 +39,7 @@ $shadow-length: 4px;
 }
 
 .pagenation {
+  width: 100%;
   max-width: $pc-size;
   display: flex;
   padding: 0;
@@ -53,4 +54,35 @@ $shadow-length: 4px;
 
 .forwardButton {
   padding: 0;
+}
+
+.imagePopup {
+  height:85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sakura1,
+.sakura2,
+.sakura3 {
+  flex: 1;
+  padding: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.sakura1 {
+  padding-top: calc(100% * 1152 / 2048);
+  background-image: url("./img/sakura1.jpg");
+}
+
+.sakura2 {
+  padding-top: calc(100% * 1152 / 2048);
+  background-image: url("./img/sakura2.jpg");
+}
+
+.sakura3 {
+  background-image: url("./img/sakura3.jpg");
 }

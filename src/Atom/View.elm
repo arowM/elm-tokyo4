@@ -146,17 +146,17 @@ button config model attrs children =
 -- Popup
 
 
-popup : Html msg -> Model.Popup -> Html msg
-popup child model =
+popup : Model.Popup -> List (Html msg) -> Html msg
+popup model children =
     div
         [ .class Style.popup .wrapper
         , attribute "aria-hidden" <|
             case model.show of
                 True ->
-                    "true"
+                    "false"
 
                 _ ->
-                    "false"
+                    "true"
         ]
         [ div
             [ .class Style.popup .background
@@ -165,5 +165,5 @@ popup child model =
         , div
             [ .class Style.popup .centerBox
             ]
-            [ child ]
+            children
         ]

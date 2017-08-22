@@ -1,6 +1,7 @@
 @import './variables';
 
 $border-radius: 0.4em;
+$duration: 700ms;
 
 .wrapper {
   position: fixed;
@@ -10,9 +11,41 @@ $border-radius: 0.4em;
   height: 100%;
   z-index: 1;
   padding: calc(#{$default-padding} * 2);
-  transition-duration: 700ms;
+  transition-duration: $duration;
   transition-property: transform;
   transition-timing-function: $over-out;
+
+  &:not([aria-hidden="true"]) {
+    animation-name: popup;
+    animation-duration: $duration;
+    animation-timing-function: $over-out;
+
+    @keyframes popup {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .background {
+      animation-name: popup_background;
+      animation-duration: $duration;
+      animation-timing-function: $over-out;
+
+      @keyframes popup_background {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
 
   .background {
     position: fixed;
@@ -43,7 +76,7 @@ $border-radius: 0.4em;
 .centerBox {
   margin: 0 auto;
   width: 100%;
-  max-width: $sp-size;
-  background-color: $main-color0;
+  max-width: $tablet-size;
+  background-color: $background-color;
   border-radius: $border-radius;
 }
