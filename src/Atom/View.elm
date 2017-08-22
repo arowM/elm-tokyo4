@@ -17,6 +17,14 @@ pack children =
         children
 
 
+wrap : List (Html msg) -> Html msg
+wrap children =
+    div
+        [ .class Style.common .wrap ]
+        children
+
+
+
 -- Alignment
 
 

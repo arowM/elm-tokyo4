@@ -2,12 +2,14 @@
 
 $border-width: 0.1em;
 $border-radius: 0.4em;
+$button-padding: 0;
 
 .core {
   border: solid $border-width $background-color;
   border-radius: $border-radius;
   color: $invert-text-color;
   cursor: pointer;
+  padding: $button-padding;
 
   &[aria-busy="true"],
   &[aria-invalid="true"] {

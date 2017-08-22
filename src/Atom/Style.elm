@@ -6,6 +6,7 @@ import CssModules exposing (css)
 common =
     css "../Atom/styles/common.scss"
         { pack = ""
+        , wrap = ""
         , inline = ""
         , top = ""
         , middle = ""
