@@ -17,25 +17,31 @@ view model =
         [ lazy View.text <| toString model.page
         , lazy scenariosView model.page
         , View.pack
-            [ View.button
-                { theme = Config.Main
-                }
-                { state = Model.NormalButton
-                }
-                [ Html.onClick Update.BackPage
-                ]
-                [ View.text "戻る"
-                ]
-            , View.button
-                { theme = Config.Sub
-                }
-                { state = Model.NormalButton
-                }
-                [ Html.onClick <| Update.ForwardPage
-                    (List.length Scenario.scenarios)
-                ]
-                [ View.text "次へ"
-                ]
+            [ View.inline
+                { align = Config.Bottom
+                } <|
+                View.button
+                    { theme = Config.Main
+                    }
+                    { state = Model.NormalButton
+                    }
+                    [ Html.onClick Update.BackPage
+                    ]
+                    [ View.text "戻る"
+                    ]
+            , View.inline
+                { align = Config.Bottom
+                } <|
+                View.button
+                    { theme = Config.Sub
+                    }
+                    { state = Model.NormalButton
+                    }
+                    [ Html.onClick <| Update.ForwardPage
+                        (List.length Scenario.scenarios)
+                    ]
+                    [ View.text "次へ"
+                    ]
             ]
         ]
 

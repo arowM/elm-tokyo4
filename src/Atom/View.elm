@@ -17,6 +17,33 @@ pack children =
         children
 
 
+-- Alignment
+
+
+inline : Config.Inline -> Html msg -> Html msg
+inline config x =
+    div
+        (List.concat
+            [ [ .class Style.common .inline
+              ]
+            , case config.align of
+                Config.Top ->
+                    [ .class Style.common .top
+                    ]
+
+                Config.Middle ->
+                    [ .class Style.common .middle
+                    ]
+
+                Config.Bottom ->
+                    [ .class Style.common .bottom
+                    ]
+            ]
+        )
+        [ x
+        ]
+
+
 
 -- Text
 

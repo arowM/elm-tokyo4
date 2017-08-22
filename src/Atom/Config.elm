@@ -1,5 +1,20 @@
 module Atom.Config exposing (..)
 
+-- Alignment
+
+
+type alias Inline =
+    { align : VerticalAlign
+    }
+
+
+type VerticalAlign
+    = Top
+    | Middle
+    | Bottom
+
+
+
 -- Balloon
 
 

@@ -1,3 +1,19 @@
 .pack {
   padding: 0;
 }
+
+.inline {
+  display: inline-block;
+
+  &.top {
+    vertical-align: top;
+  }
+
+  &.middle {
+    vertical-align: middle;
+  }
+
+  &.bottom {
+    vertical-align: bottom;
+  }
+}
