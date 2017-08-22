@@ -185,6 +185,7 @@ scenarios =
     , imagePopup "sakura1"
     , imagePopup "sakura2"
     , imagePopup "sakura3"
+    , imagePopup "sakura4"
     , Question
         [ View.text "今日のテーマ"
         ]
